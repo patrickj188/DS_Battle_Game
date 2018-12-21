@@ -14,10 +14,8 @@ var winCount = 0;
 var lossCount = 0;
 var fighterPicked;
 var computerChoice;
-var userChoice;
-var userAttackValue;
-var computerAttackValue;
-var fighter = {
+// var userChoice;
+var fighters = {
     solaire: {
         name: "Solaire of Astora",
         hp: 200,
@@ -45,13 +43,13 @@ var fighter = {
 };
 
 var bosses = {
-    manus:{
+    manus: {
         name: "Manus, Father of the Abyss",
         hp: 700,
         attack: "Abyss Rain",
     },
-    dragon:{
-        name:"Gaping Dragon",
+    dragon: {
+        name: "Gaping Dragon",
         hp: 400,
         attack: "Acid Throw-Up",
 
@@ -61,37 +59,108 @@ var bosses = {
         hp: 300,
         attack: "Double Machete Swing",
     },
-    Artorias: {
+    artorias: {
         name: "Artorias the Abysswalke",
         hp: 300,
         attack: "Wrath of the Abyss",
     }
 };
 
-$( document ).ready(function(){
+var audio = document.getElementById("mySound");
+audio.autoplay = true;
+audio.load();
 
-    initialize()
-    function setup(){
-        winCount=0;
-        lossCounter=0;
+
+$(document).ready(function () {
+
+
+    // playSound("assests/sounds/MainTheme.mp3").autoPlay;
+
+
+    $(".fighter-img").on("click", startGame)
+
+
+    function startGame(event) {
+        var fighter = getFighter(event.target.id);
+        var boss = getBoss()
+
+
     }
 
-$(".fighter-img").on("click", function (){
+    function getFighter(name) {
+        var fighter = fighters[name];
+        $("#fightSection").append(fighter);
+        console.log(fighter);
 
-})
+        
+        return fighter;
+    }
+
+    function getBoss(name) {
+        var boss = bosses["manus"]
+        $("#defenderArea").append(boss);
+        console.log(boss);
+        return boss;
+    }
+
+
+    function attackValue(value) {
+        var attack = Math.floor(Math.random() * 100);
+        var userAttackValue = attack;
+        var computerAttackValue = attack;
+
+        $("#attackB").on("click", attackValue(value))
+
+    }
+    function scoreCount(score) {
+        var userHp = fighters[hp]
+        var bossHp = bosses[hp]
+        if (userHp < bossHp) {
+            lossCount--;
+        }
+        else if (userHp > bossHp) {
+            winCount++;
+
+        }
+    }
+
+    function resetGame(event) {
+        // $("#rest").on("click", function()
 
 
 
-$(".boss-img").on("click", function(){
-
-})
 
 
+    }
 
 
-
+});
 
 
 
 
-};
+
+
+
+
+
+// function setup() {
+    //     winCount = 0;
+    //     lossCounter = 0;
+    //     fighter =
+    // }
+
+
+
+    // function characterChoice(userChoice) {
+    //     var output = document.getElementById('#fightSection');
+    //     output.innerHTML = "";
+    //     var picks = ["https://oscarotero.com/jquery/", "https://github.com/patrickj188/DS_Battle_Game"];
+    //     var choices = ["solaire", "ashen", "onion", "knight"];
+    //     var sent = ("You picked " + picks[userChoice] + "");
+    //     var img = '<img src="' + picks[userChoice] + '">';
+    //     output.innerHTML = sent + img;
+
+    // }
+
+    // characterChoice();
