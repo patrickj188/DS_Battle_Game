@@ -1,20 +1,34 @@
 body {
     background-image: url(background3.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% 110%;
-    
+
+
+
+}
+.container{
+    margin-left: 0;
 }
 .fighter-img {
     height: 300px;
+
 }
 
 .boss-img {
     height: 300px;
+
 }
 h1 {
     color: white;
 
 }
 h2 {
-    color: white;
+    color: white; 
+    padding: 0 15px;
+}
+#attackB {
+    float: left;
+    margin: 0 20px;
+}
+#restart {
+    float: left;
+    margin: 0 20px;
 }
